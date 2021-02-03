@@ -1,9 +1,5 @@
 #lang racket
 
-(define (double x y)
-  (* x y)
-  )
-
 ; function A
 (define (A num)
   (if (< num 0) (* -1 num) num)
@@ -47,4 +43,14 @@
         [(E num) (F (- n 1) (+ num 1))]
         [else (F n (+ num 1))])
       )
+  )
+
+; function G
+(define (G num [lst (list)] [d 3])
+  (cond
+    [(equal? num 1) lst]
+    [(equal? (modulo num 2) 0) (G (/ num 2) (append lst (list 2)) d)]
+    [(equal? (modulo num d) 0) (G (/ num d) (append lst (list d)) d)]
+    [else (G num lst (+ d 2))]
+    )
   )
