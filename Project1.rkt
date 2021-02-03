@@ -54,3 +54,34 @@
     [else (G num lst (+ d 2))]
     )
   )
+
+; function H
+(define (H a b)
+  (if (< a b) a b)
+  )
+
+; function I
+(define (I a b)
+  (if (> a b) a b)
+  )
+
+; function J
+(define (J lst [min_number (car lst)])
+  (cond
+    [(empty? lst) min_number]
+    [(> min_number (car lst)) (J (cdr lst) (car lst))]
+    [else (J (cdr lst) min_number)]
+    )
+  )
+
+; function K
+(define (K lst [max_number (car lst)])
+  (cond
+    [(empty? lst) max_number]
+    [(< max_number (car lst)) (K (cdr lst) (car lst))]
+    [else (K (cdr lst) max_number)]
+    )
+  )
+    
+      
+  
