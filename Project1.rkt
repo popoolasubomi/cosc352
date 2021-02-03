@@ -83,5 +83,8 @@
     )
   )
     
-      
+; function L
+(define (L lst)
+  (if (empty? lst) 0 (+ (car lst) (L (cdr lst))))
+  )
   
