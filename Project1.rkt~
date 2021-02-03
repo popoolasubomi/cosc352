@@ -87,31 +87,4 @@
 (define (L lst)
   (if (empty? lst) 0 (+ (car lst) (L (cdr lst))))
   )
-
-; function M
-(define (M lst [l (length lst)] [total 0])
-  (if (empty? lst) (/ total l) (M (cdr lst) l (+ total (car lst))))
-  )
-
-; function N
-(define (N lst)
-  (if (empty? lst) 1 (* (car lst) (N (cdr lst))))
-  )
-
-; function O
-(define (O n lst)
-  (if (equal? n 0) (car lst) (O (- n 1) (cdr lst))
-      )
-  )
-
-; function P '(10 4 8 13 9)
-(define (P l [lst (cdr l)] [min_num (car l)] [arr (list)] [cnt 0] [n (length lst)])
-  (print arr)  
-  (if (empty? lst) arr
-      (cond
-        [(equal? cnt n) (P l (cdr lst) (car lst) (append arr (list min_num)) 0 (- (length lst) 1))]
-        [(> min_num (car lst)) (P l (append (cdr lst) (list min_num)) (car lst) arr (+ cnt 1) n)]
-        [else (P l (append (cdr lst) (list (car lst))) min_num arr (+ cnt 1) n)]
-        )
-      )
-  )
+  
