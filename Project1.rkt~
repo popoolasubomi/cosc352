@@ -41,10 +41,3 @@
   )
 
 ; function F
-(define (F n [num 2])
-  (if (<= n 0) (- num 1)
-      (cond
-        [(E num) (F (- n 1) (+ num 1))]
-        [else (F n (+ num 1))])
-      )
-  )
