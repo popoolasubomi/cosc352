@@ -1,0 +1,16 @@
+#lang racket
+
+(define (append lhs rhs)
+  (if (empty? lhs)
+      rhs
+      (cons (first lhs) (append (rest lhs) rhs))))
+  
+(define (P unsorted_arr [processed_arr (cdr unsorted_arr)] [minimum_number (car unsorted_arr)] [sorted_arr (list)] [index 0] [arr_length (length processed_arr)])
+  (if (empty? processed_arr) (append sorted_arr (list minimum_number))
+      (cond
+        [(equal? index arr_length) (P unsorted_arr (cdr processed_arr) (car processed_arr) (append sorted_arr (list minimum_number)) 0 (- (length processed_arr) 1))]
+        [(> minimum_number (car processed_arr)) (P unsorted_arr (append (cdr processed_arr) (list minimum_number)) (car processed_arr) sorted_arr (+ index 1) arr_length)]
+        [else (P unsorted_arr (append (cdr processed_arr) (list (car processed_arr))) minimum_number sorted_arr (+ index 1) arr_length)]
+        )
+      )
+  )
